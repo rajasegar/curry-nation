@@ -1,0 +1,15 @@
+extends views/layout
+block body
+  h2 Sign up 
+  form
+    .mb-3
+      label.form-label(for='exampleInputEmail1') Email
+      input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp')
+    .mb-3
+      label.form-label(for='exampleInputEmail1') Password
+      input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp')
+    .mb-3
+      label.form-label(for='exampleInputEmail1') Password confirmation
+      input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp')
+
+    button.btn.btn-primary(type='submit') Sign up

@@ -1,0 +1,15 @@
+extends views/layout
+block body
+  h2 Login
+  form(action="/login", method="POST")
+    .mb-3
+      label.form-label(for='txtEmal') Email
+      input#txtEmal.form-control(type='email' aria-describedby='Email', name="email")
+    .mb-3
+      label.form-label(for='txtPwd') Password
+      input#txtPwd.form-control(type='password' aria-describedby='Password', name="password")
+    .mb-3.form-check
+      input#exampleCheck1.form-check-input(type='checkbox')
+      label.form-check-label(for='exampleCheck1') Remember me
+
+    button.btn.btn-primary(type='submit') Login

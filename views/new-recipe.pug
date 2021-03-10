@@ -1,0 +1,42 @@
+extends views/layout
+block body
+  h2 New Recipe
+  form
+    .mb-3
+      label.form-label(for='exampleInputEmail1') Title
+      input#exampleInputEmail1.form-control(type='text' aria-describedby='emailHelp')
+    .mb-3
+      label.form-label(for='exampleInputPassword1') Food preference
+      select.form-select(aria-label="Food preference")
+        option(value="Vegetarian") Vegetarian
+        option(value="Vegan") Vegan
+        option(value="Meat") Meat
+        option(value="Dairy") Dairy
+    .mb-3
+      label.form-label(for='exampleInputPassword1') Food type
+      select.form-select(aria-label="Food type")
+        option(value="Curry") Curry
+        option(value="Dessert") Dessert
+        option(value="Sides") Sides
+        option(value="Breakfast") Breakfast
+    .mb-3
+      label.form-label(for='exampleInputPassword1') Cuisine
+      select.form-select(aria-label="Cuisine preference")
+        option(value="Italian") Italian
+        option(value="Mexican") Mexican
+        option(value="Indian") Indian
+        option(value="Chinese") Chinese
+    .mb-3
+      label.form-label(for='exampleInputEmail1') Servings
+      input#exampleInputEmail1.form-control(type='text' aria-describedby='emailHelp')
+    .mb-3
+      label.form-label(for='exampleInputEmail1') Cooking time
+      input#exampleInputEmail1.form-control(type='text' aria-describedby='emailHelp')
+    .mb-3
+      label.form-label(for='exampleInputEmail1') Level of Difficulty
+      input#exampleInputEmail1.form-control(type='text' aria-describedby='emailHelp')
+    .mb-3
+      label.form-label(for='exampleFormControlTextarea1') Ingredients
+      textarea#exampleFormControlTextarea1.form-control(rows='3')
+
+    button.btn.btn-primary(type='submit') Submit
