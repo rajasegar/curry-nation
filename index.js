@@ -5,25 +5,18 @@ const fastifySession = require('fastify-session');
 const fastifyCookie = require('fastify-cookie')
 const fastifyFormbody = require('fastify-formbody')
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-mongoose.connect('mongodb://localhost:27017/currynation', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_DB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 db.once('open', function() {
 });
 
-const recipeSchema = new mongoose.Schema({
-  name: String,
-  preference: String,
-  type: String,
-  cuisine: String,
-  servings: Number,
-  cookingTime: Number,
-  difficulty: String,
-  ingredients: String
-});
-const Recipe = mongoose.model('Recipe', recipeSchema);
+
+const Recipe = require('./models/recipe');
+const recipeRoute = require('./routes/recipe');
 
 const app = fastify({logger: true});
 
@@ -53,19 +46,6 @@ app.get('/new', async (req, res) => {
   //}
 });
 
-app.post('/new', async (req, res) => {
-  const recipe = new Recipe(req.body);
-
-  try {
-    await recipe.save();
-    console.log('recipe created');
-  } catch(err) {
-    console.log(err);
-  }
-
-  res.redirect('/home');
-
-});
 
 app.get('/home', async (req, res) => {
 
@@ -113,17 +93,12 @@ app.get('/logout', (request, reply) => {
     }
   });
 
-app.get('/recipe/:id', async (req, res) => {
-  const { id } = req.params;
-  const recipe = await Recipe.findById(id);
-  res.render('recipe', { recipe  });
-});
-
-app.get('/recipe/edit/:id', async (req, res) => {
-  const { id } = req.params;
-  const recipe = await Recipe.findById(id);
-  res.render('edit-recipe', { recipe  });
-});
+// Recipe routes
+//
+app.get('/recipe/:id', recipeRoute.show);
+app.post('/recipe/new', recipeRoute.create);
+app.get('/recipe/edit/:id',recipeRoute.edit);
+app.post('/recipe/update/:id', recipeRoute.update);
 
 app.get('/recipes', async (req, res) => {
   const recipes = await Recipe.find(req.query);
@@ -135,24 +110,10 @@ app.get('/recipes', async (req, res) => {
   }
 });
 
-app.post('/recipe/update/:id', async (req, res) => {
-  const { id } = req.params;
-  const recipe = await Recipe.findById(id);
-
-  try {
-    await recipe.update(req.body);
-    console.log('recipe updated');
-  } catch(err) {
-    console.log(err);
-  }
-
-  res.redirect('/home');
-
-});
 
 const start = async () => {
   try {
-    await app.listen(3000);
+    await app.listen(process.env.PORT);
   } catch(err) {
     app.log.error(err);
     process.exit(1);

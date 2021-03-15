@@ -1,4 +1,5 @@
 dependencies:
+  dotenv: 8.2.0
   fastify: 3.13.0
   fastify-cookie: 5.1.0
   fastify-formbody: 5.0.0
@@ -496,6 +497,12 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==
+  /dotenv/8.2.0:
+    dev: false
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
   /duplexer3/0.1.4:
     dev: true
     resolution:
@@ -1878,6 +1885,7 @@ packages:
     resolution:
       integrity: sha1-9+572FfdfB0tOMDnTvvWgdFDH9E=
 specifiers:
+  dotenv: ^8.2.0
   fastify: ^3.13.0
   fastify-cookie: ^5.1.0
   fastify-formbody: ^5.0.0
