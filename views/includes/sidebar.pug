@@ -1,24 +1,38 @@
-.card
+.card.mb-3.text-white.bg-primary
   .card-header
     | Food Preferences
   ul.list-group.list-group-flush
-    li.list-group-item Vegetarian
-    li.list-group-item Vegan
-    li.list-group-item Meat
-    li.list-group-item Dair
-.card
+    li.list-group-item 
+      a(href="/recipes?preference=Vegetarian") Vegetarian
+    li.list-group-item 
+      a(href="/recipes?preference=Vegan") Vegan
+    li.list-group-item
+      a(href="/recipes?preference=Meat") Meat
+    li.list-group-item
+      a(href="/recipes?preference=Dairy") Dairy
+
+.card.mb-3.text-white.bg-secondary
   .card-header
     | Food Type
   ul.list-group.list-group-flush
-    li.list-group-item Curry
-    li.list-group-item Dessert
-    li.list-group-item Sides
-    li.list-group-item Breakfast
-.card
+    li.list-group-item
+      a(href="/recipes?type=Curry") Curry
+    li.list-group-item
+      a(href="/recipes?type=Dessert") Dessert
+    li.list-group-item
+      a(href="/recipes?type=Sides") Sides
+    li.list-group-item
+      a(href="/recipes?type=Breakfast") Breakfast
+
+.card.mb-3.text-white.bg-success
   .card-header
     | Cuisine
   ul.list-group.list-group-flush
-    li.list-group-item Italian
-    li.list-group-item Mexican
-    li.list-group-item Indian
-    li.list-group-item Chinese
+    li.list-group-item
+      a(href="/recipes?cuisine=Italian") Italian
+    li.list-group-item
+      a(href="/recipes?cuisine=Mexican") Mexican
+    li.list-group-item
+      a(href="/recipes?cuisine=Indian") Indian
+    li.list-group-item
+      a(href="/recipes?cuisine=Chinese") Chinese

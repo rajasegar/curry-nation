@@ -4,8 +4,16 @@ block body
     .col-3
       include views/includes/sidebar
     .col-9
-      h1 Hello user
-      a.btn.btn-primary(href="/new") Create new recipes
+      .d-flex.flex-row.justify-content-between.mb-3
+        h2 Recipes
+        div
+          if query
+            | #{query}
+            | #{' '}
+            a(href="/recipes") Clear Filters
+          end
+        div
+          a.btn.btn-primary(href="/new") Create new recipes
       table.table.table-striped
         tr
           th Name

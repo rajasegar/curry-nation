@@ -125,6 +125,30 @@ app.get('/recipe/edit/:id', async (req, res) => {
   res.render('edit-recipe', { recipe  });
 });
 
+app.get('/recipes', async (req, res) => {
+  const recipes = await Recipe.find(req.query);
+  if(Object.keys(req.query).length > 0) {
+  const _query = JSON.stringify({ ...req.query });
+  res.render('recipes', { recipes, query: _query   });
+  } else {
+  res.render('recipes', { recipes   });
+  }
+});
+
+app.post('/recipe/update/:id', async (req, res) => {
+  const { id } = req.params;
+  const recipe = await Recipe.findById(id);
+
+  try {
+    await recipe.update(req.body);
+    console.log('recipe updated');
+  } catch(err) {
+    console.log(err);
+  }
+
+  res.redirect('/home');
+
+});
 
 const start = async () => {
   try {

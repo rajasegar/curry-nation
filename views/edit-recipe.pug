@@ -1,7 +1,7 @@
 extends views/layout
 block body
   h2 Edit Recipe - #{recipe.name}
-  form(action="/new", method="POST")
+  form(action="/recipe/update/" + recipe._id, method="POST")
     .mb-3
       label.form-label(for='txtTitle') Title
       input#txtTitle.form-control(name="name",type='text' aria-describedby='emailHelp', value=recipe.name)
