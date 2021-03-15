@@ -20,7 +20,7 @@ const recipeSchema = new mongoose.Schema({
   cuisine: String,
   servings: Number,
   cookingTime: Number,
-  difficulty: Number,
+  difficulty: String,
   ingredients: String
 });
 const Recipe = mongoose.model('Recipe', recipeSchema);
@@ -46,20 +46,23 @@ app.get('/', async (req, res) => {
 
 
 app.get('/new', async (req, res) => {
-  if(req.session.authenticated) {
+  //if(req.session.authenticated) {
     res.render('new-recipe');
-  } else {
-    res.redirect('/login');
-  }
+  //} else {
+    //res.redirect('/login');
+  //}
 });
 
 app.post('/new', async (req, res) => {
   const recipe = new Recipe(req.body);
-  recipe.save((err, recipe) => {
-    if(err) return console.error(err);
+
+  try {
+    await recipe.save();
     console.log('recipe created');
-  });
-  console.log(req.body);
+  } catch(err) {
+    console.log(err);
+  }
+
   res.redirect('/home');
 
 });
@@ -68,13 +71,12 @@ app.get('/home', async (req, res) => {
 
   let recipes = [];
   recipes = await Recipe.find({});
-  console.log(recipes);
 
-  if(req.session.authenticated) {
+  //if(req.session.authenticated) {
     res.render('home', { recipes });
-  } else {
-    res.redirect('/login');
-  }
+  //} else {
+    //res.redirect('/login');
+  //}
 });
 
 app.get('/signup', async (req, res) => {
@@ -110,6 +112,18 @@ app.get('/logout', (request, reply) => {
       reply.redirect('/')
     }
   });
+
+app.get('/recipe/:id', async (req, res) => {
+  const { id } = req.params;
+  const recipe = await Recipe.findById(id);
+  res.render('recipe', { recipe  });
+});
+
+app.get('/recipe/edit/:id', async (req, res) => {
+  const { id } = req.params;
+  const recipe = await Recipe.findById(id);
+  res.render('edit-recipe', { recipe  });
+});
 
 
 const start = async () => {

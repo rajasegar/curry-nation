@@ -1,24 +1,36 @@
 extends views/layout
 block body
-  h1 Hello user
-  a(href="/new") Create new recipes
-  table.table.table-striped
-    tr
-      th Name
-      th Preference
-      th Type
-      th Cuisine
-      th Servings
-      th Cooking time
-      th Difficulty
-      th Ingredients
-    each recipe in recipes
-      tr
-        td= recipe.name
-        td= recipe.preference
-        td= recipe.type
-        td= recipe.cuisine
-        td= recipe.servings
-        td= recipe.cookingTime
-        td= recipe.difficulty
-        td= recipe.ingredients
+  .row
+    .col-3
+      h2 Sidebar
+      include views/includes/sidebar
+    .col-9
+      h1 Hello user
+      a.btn.btn-primary(href="/new") Create new recipes
+      table.table.table-striped
+        tr
+          th Name
+          th Preference
+          th Type
+          th Cuisine
+          th Servings
+          th Cooking time
+          th Difficulty
+          th Show
+          th Edit
+          th Delete
+        each recipe in recipes
+          tr
+            td= recipe.name
+            td= recipe.preference
+            td= recipe.type
+            td= recipe.cuisine
+            td= recipe.servings
+            td= recipe.cookingTime
+            td= recipe.difficulty
+            td
+              a.btn.btn-link.btn-primary.text-white(href="/recipe/" + recipe._id) Show
+            td
+              a.btn.btn-link.btn-success.text-white(href="/recipe/edit/" + recipe._id) Edit
+            td
+              button.btn.btn-danger(type="button") Delete

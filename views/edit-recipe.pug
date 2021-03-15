@@ -1,10 +1,10 @@
 extends views/layout
 block body
-  h2 New Recipe
+  h2 Edit Recipe - #{recipe.name}
   form(action="/new", method="POST")
     .mb-3
-      label.form-label(for='exampleInputEmail1') Title
-      input#exampleInputEmail1.form-control(name="name",type='text' aria-describedby='emailHelp')
+      label.form-label(for='txtTitle') Title
+      input#txtTitle.form-control(name="name",type='text' aria-describedby='emailHelp', value=recipe.name)
     .mb-3
       label.form-label(for='exampleInputPassword1') Food preference
       select.form-select(aria-label="Food preference", name="preference")
@@ -28,10 +28,10 @@ block body
         option(value="Chinese") Chinese
     .mb-3
       label.form-label(for='exampleInputEmail1') Servings
-      input#exampleInputEmail1.form-control(type='number' aria-describedby='emailHelp', name="servings")
+      input#exampleInputEmail1.form-control(type='number' aria-describedby='emailHelp', name="servings",value=recipe.servings)
     .mb-3
       label.form-label(for='exampleInputEmail1') Cooking time
-      input#exampleInputEmail1.form-control(type='number' aria-describedby='emailHelp',name="cookingTime")
+      input#exampleInputEmail1.form-control(type='number' aria-describedby='emailHelp',name="cookingTime",value=recipe.cookingTime)
     .mb-3
       label.form-label(for='exampleInputEmail1') Level of Difficulty
       select.form-select(aria-label="Cuisine preference", name="difficulty")
@@ -41,5 +41,7 @@ block body
     .mb-3
       label.form-label(for='exampleFormControlTextarea1') Ingredients
       textarea#exampleFormControlTextarea1.form-control(rows='3', name="ingredients")
+        | #{recipe.ingredients}
 
-    button.btn.btn-primary(type='submit') Submit
+    button.btn.btn-primary(type='submit') Update
+    a.btn.btn-secondary(href="/recipe/" + recipe._id) Cancel

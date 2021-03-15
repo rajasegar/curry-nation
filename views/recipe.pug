@@ -1,0 +1,26 @@
+extends views/layout
+block body
+  h1 #{recipe.name}
+  table.table.table-striped
+    tr
+      th Name
+      th Preference
+      th Type
+      th Cuisine
+      th Servings
+      th Cooking time
+      th Difficulty
+      th Ingredients
+    tr
+      td= recipe.name
+      td= recipe.preference
+      td= recipe.type
+      td= recipe.cuisine
+      td= recipe.servings
+      td= recipe.cookingTime
+      td= recipe.difficulty
+      td= recipe.ingredients
+      td
+        a.btn.btn-link.btn-success.text-white(href="/recipe/edit/" + recipe._id) Edit
+      td
+        button.btn.btn-danger(type="button") Delete
