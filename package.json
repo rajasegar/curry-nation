@@ -16,7 +16,8 @@
     "fastify-cookie": "^5.1.0",
     "fastify-formbody": "^5.0.0",
     "fastify-pug": "^2.0.0",
-    "fastify-session": "^5.2.1"
+    "fastify-session": "^5.2.1",
+    "mongoose": "^5.12.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

@@ -2,3 +2,23 @@ extends views/layout
 block body
   h1 Hello user
   a(href="/new") Create new recipes
+  table.table.table-striped
+    tr
+      th Name
+      th Preference
+      th Type
+      th Cuisine
+      th Servings
+      th Cooking time
+      th Difficulty
+      th Ingredients
+    each recipe in recipes
+      tr
+        td= recipe.name
+        td= recipe.preference
+        td= recipe.type
+        td= recipe.cuisine
+        td= recipe.servings
+        td= recipe.cookingTime
+        td= recipe.difficulty
+        td= recipe.ingredients

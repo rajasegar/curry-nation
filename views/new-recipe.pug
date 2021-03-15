@@ -1,42 +1,42 @@
 extends views/layout
 block body
   h2 New Recipe
-  form
+  form(action="/new", method="POST")
     .mb-3
       label.form-label(for='exampleInputEmail1') Title
-      input#exampleInputEmail1.form-control(type='text' aria-describedby='emailHelp')
+      input#exampleInputEmail1.form-control(name="name",type='text' aria-describedby='emailHelp')
     .mb-3
       label.form-label(for='exampleInputPassword1') Food preference
-      select.form-select(aria-label="Food preference")
+      select.form-select(aria-label="Food preference", name="preference")
         option(value="Vegetarian") Vegetarian
         option(value="Vegan") Vegan
         option(value="Meat") Meat
         option(value="Dairy") Dairy
     .mb-3
       label.form-label(for='exampleInputPassword1') Food type
-      select.form-select(aria-label="Food type")
+      select.form-select(aria-label="Food type", name="type")
         option(value="Curry") Curry
         option(value="Dessert") Dessert
         option(value="Sides") Sides
         option(value="Breakfast") Breakfast
     .mb-3
       label.form-label(for='exampleInputPassword1') Cuisine
-      select.form-select(aria-label="Cuisine preference")
+      select.form-select(aria-label="Cuisine preference", name="cuisine")
         option(value="Italian") Italian
         option(value="Mexican") Mexican
         option(value="Indian") Indian
         option(value="Chinese") Chinese
     .mb-3
       label.form-label(for='exampleInputEmail1') Servings
-      input#exampleInputEmail1.form-control(type='text' aria-describedby='emailHelp')
+      input#exampleInputEmail1.form-control(type='text' aria-describedby='emailHelp', name="servings")
     .mb-3
       label.form-label(for='exampleInputEmail1') Cooking time
-      input#exampleInputEmail1.form-control(type='text' aria-describedby='emailHelp')
+      input#exampleInputEmail1.form-control(type='text' aria-describedby='emailHelp',name="cookingTime")
     .mb-3
       label.form-label(for='exampleInputEmail1') Level of Difficulty
-      input#exampleInputEmail1.form-control(type='text' aria-describedby='emailHelp')
+      input#exampleInputEmail1.form-control(type='text' aria-describedby='emailHelp', name="difficulty")
     .mb-3
       label.form-label(for='exampleFormControlTextarea1') Ingredients
-      textarea#exampleFormControlTextarea1.form-control(rows='3')
+      textarea#exampleFormControlTextarea1.form-control(rows='3', name="ingredients")
 
     button.btn.btn-primary(type='submit') Submit
